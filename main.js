@@ -17,7 +17,7 @@ window.addEventListener('load', () => {
   );
 
   decimal.addEventListener('click', () => {
-    console.log('adding decimal comma');
+    console.log('adding decimal dot');
     if (!display.textContent.includes('.')) {
       display.textContent += '.';
     }
