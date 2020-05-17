@@ -27,12 +27,12 @@ window.addEventListener('load', () => {
   );
 
   decimal.addEventListener('click', () => {
-    if (!display.textContent.includes('.')) {
-      console.log('adding decimal dot');
-      display.textContent += '.';
-      calculator.operation
-        ? (calculator.secondFactor = display.textContent)
-        : (calculator.firstFactor = display.textContent);
+    if (calculator.operation && !calculator.secondFactor.includes('.')) {
+      display.textContent = calculator.secondFactor === '0' ? '0.' : display.textContent + '.';
+      calculator.secondFactor = display.textContent;
+    } else {
+      !display.textContent.includes('.') ? (display.textContent += '.') : '';
+      calculator.firstFactor = display.textContent;
     }
   });
 
