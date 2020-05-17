@@ -47,14 +47,25 @@ window.addEventListener('load', () => {
   document.querySelectorAll('.operations').forEach(operation => {
     operation.addEventListener('click', e => {
       console.log(e.target.textContent);
-      if (calculator.operation) {
+      // handle consecutive operations
+      if (calculator.operation && calculator.secondFactor !== '0') {
         const result = calculator.handleOperation();
         console.log('resultado', result);
         display.textContent = result;
-        calculator.firstFactor = result;
+        calculator.firstFactor = display.textContent;
         calculator.secondFactor = '0';
       }
-      calculator.operation = e.target.textContent;
+
+      if (calculator.operation === e.target.textContent) {
+        e.target.classList.remove('selected');
+        calculator.operation = null;
+      } else {
+        document
+          .querySelectorAll('.operations')
+          .forEach(operation => operation.classList.remove('selected'));
+        calculator.operation = e.target.textContent;
+        e.target.classList.add('selected');
+      }
     });
   });
 
@@ -62,8 +73,12 @@ window.addEventListener('load', () => {
     const result = calculator.handleOperation();
     console.log('resultado', result);
     display.textContent = result;
-    calculator.firstFactor = result;
+    calculator.firstFactor = display.textContent;
     calculator.secondFactor = '0';
     calculator.operation = null;
+
+    document
+      .querySelectorAll('.operations')
+      .forEach(operation => operation.classList.remove('selected'));
   });
 });
