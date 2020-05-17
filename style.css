@@ -1,6 +1,6 @@
 .calculator {
   width: fit-content;
-  margin: 10em auto;
+  margin: 4em auto;
   border: 1px solid black;
   padding: 1em;
   box-shadow: 0.3em 0.3em 0.5em #8e8c8c;
@@ -16,7 +16,7 @@ button {
 .row {
   display: flex;
 }
-.equal {
+#equal {
   width: 10.2em;
   height: 10.2em;
 }
