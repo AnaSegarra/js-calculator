@@ -47,6 +47,13 @@ window.addEventListener('load', () => {
   document.querySelectorAll('.operations').forEach(operation => {
     operation.addEventListener('click', e => {
       console.log(e.target.textContent);
+      if (calculator.operation) {
+        const result = calculator.handleOperation();
+        console.log('resultado', result);
+        display.textContent = result;
+        calculator.firstFactor = result;
+        calculator.secondFactor = '0';
+      }
       calculator.operation = e.target.textContent;
     });
   });
