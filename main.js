@@ -42,6 +42,10 @@ window.addEventListener('load', () => {
     calculator.firstFactor = '0';
     calculator.secondFactor = '0';
     calculator.operation = null;
+
+    document
+      .querySelectorAll('.operations')
+      .forEach(operation => operation.classList.remove('selected'));
   });
 
   document.querySelectorAll('.operations').forEach(operation => {
@@ -56,10 +60,7 @@ window.addEventListener('load', () => {
         calculator.secondFactor = '0';
       }
 
-      if (calculator.operation === e.target.textContent) {
-        e.target.classList.remove('selected');
-        calculator.operation = null;
-      } else {
+      if (calculator.operation !== e.target.textContent) {
         document
           .querySelectorAll('.operations')
           .forEach(operation => operation.classList.remove('selected'));
