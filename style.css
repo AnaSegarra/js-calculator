@@ -9,7 +9,7 @@
 
 button {
   width: 5em;
-  height: 5em;
+  height: 4em;
   margin: 0.1em;
   font-size: 1.1rem;
   cursor: pointer;
@@ -18,9 +18,10 @@ button {
 .row {
   display: flex;
 }
-#equal {
+#equal,
+#clear {
   width: 10.2em;
-  height: 10.2em;
+  height: 4em;
 }
 p {
   text-align: right;

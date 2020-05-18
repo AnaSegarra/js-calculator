@@ -81,4 +81,11 @@ window.addEventListener('load', () => {
 
     operators.forEach(operator => operator.classList.remove('selected'));
   });
+
+  document.getElementById('delete').addEventListener('click', () => {
+    display.textContent = display.textContent.length > 1 ? display.textContent.slice(0, -1) : '0';
+    calculator.operation
+      ? (calculator.secondFactor = display.textContent)
+      : (calculator.firstFactor = display.textContent);
+  });
 });
