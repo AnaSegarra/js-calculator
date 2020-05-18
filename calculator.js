@@ -42,34 +42,26 @@ class Calculator {
         result = this.screen.textContent;
     }
 
-    console.log('resultado', result);
     calculator.firstFactor = result; // set first operand with previous operation's result
     calculator.secondFactor = null;
     this.screen.textContent = !result || result === Infinity ? 'Math ERROR' : result;
   }
 
   addNumber(input) {
-    console.log('clicado', input);
-    if (this.checkError()) {
-      console.log('cannot do that');
-      return;
-    }
+    if (this.checkError()) return;
+
     if (!this.operation) {
-      console.log('first factor');
       this.screen.textContent = this.firstFactor === '0' ? input : this.screen.textContent + input;
       this.firstFactor = this.screen.textContent;
     } else {
-      console.log('second factor');
       this.screen.textContent = !this.secondFactor ? input : this.screen.textContent + input;
       this.secondFactor = this.screen.textContent;
     }
   }
 
   addDecimal() {
-    if (this.checkError()) {
-      console.log('cannot do that');
-      return;
-    }
+    if (this.checkError()) return;
+
     if (this.operation) {
       !this.secondFactor
         ? (this.screen.textContent = '0.')
@@ -92,6 +84,8 @@ class Calculator {
   }
 
   delete() {
+    if (this.checkError()) return;
+
     this.screen.textContent =
       this.screen.textContent.length > 1 ? this.screen.textContent.slice(0, -1) : '0';
 

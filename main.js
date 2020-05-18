@@ -16,7 +16,6 @@ window.addEventListener('load', () => {
 
   operators.forEach(operator => {
     operator.addEventListener('click', e => {
-      console.log(e.target.textContent);
       // handle consecutive operations
       if (calculator.operation && calculator.secondFactor) calculator.handleOperation();
 
