@@ -6,7 +6,6 @@
   box-shadow: 0.3em 0.3em 0.5em #8e8c8c;
   border-radius: 0.8em;
 }
-
 button {
   width: 5em;
   height: 4em;
@@ -14,6 +13,7 @@ button {
   font-size: 1.1rem;
   cursor: pointer;
   outline: none;
+  border-radius: 1em;
 }
 .row {
   display: flex;
@@ -30,8 +30,26 @@ p {
   color: white;
   font-size: 2rem;
   border-radius: 0.8em;
+  border: 1px solid #5c5c5c;
   pointer-events: none;
 }
+
+/* color buttons */
+.number,
+#decimal {
+  background-color: #c2c2c2;
+}
+#delete,
+#clear {
+  background-color: #f55252;
+}
+.operations {
+  background-color: #ffa500;
+}
 .selected {
-  background-color: #e6e6fa;
+  background-color: #b38531;
+  border-color: #886421;
+}
+#equal {
+  background-color: #7fb829;
 }
