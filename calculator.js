@@ -18,6 +18,7 @@ class Calculator {
   divide(num1, num2) {
     return Number(num1) / Number(num2);
   }
+
   handleOperation() {
     let result;
     // operations are based on the first operand if only one operand has been entered when hitting equal sign
@@ -44,11 +45,15 @@ class Calculator {
     console.log('resultado', result);
     calculator.firstFactor = result; // set first operand with previous operation's result
     calculator.secondFactor = null;
-    this.screen.textContent = result;
+    this.screen.textContent = !result || result === Infinity ? 'Math ERROR' : result;
   }
 
   addNumber(input) {
     console.log('clicado', input);
+    if (this.checkError()) {
+      console.log('cannot do that');
+      return;
+    }
     if (!this.operation) {
       console.log('first factor');
       this.screen.textContent = this.firstFactor === '0' ? input : this.screen.textContent + input;
@@ -61,7 +66,10 @@ class Calculator {
   }
 
   addDecimal() {
-    console.log('adding decimal');
+    if (this.checkError()) {
+      console.log('cannot do that');
+      return;
+    }
     if (this.operation) {
       !this.secondFactor
         ? (this.screen.textContent = '0.')
@@ -90,5 +98,9 @@ class Calculator {
     this.operation
       ? (this.secondFactor = this.screen.textContent)
       : (this.firstFactor = this.screen.textContent);
+  }
+
+  checkError() {
+    return this.firstFactor === Infinity || isNaN(Number(this.firstFactor));
   }
 }
