@@ -12,6 +12,8 @@ button {
   height: 5em;
   margin: 0.1em;
   font-size: 1.1rem;
+  cursor: pointer;
+  outline: none;
 }
 .row {
   display: flex;
@@ -27,6 +29,7 @@ p {
   color: white;
   font-size: 2rem;
   border-radius: 0.8em;
+  pointer-events: none;
 }
 .selected {
   background-color: #e6e6fa;

@@ -4,6 +4,7 @@ window.addEventListener('load', () => {
   let display = document.getElementById('display');
   const clear = document.getElementById('clear');
   const decimal = document.getElementById('decimal');
+  const operators = document.querySelectorAll('.operations');
 
   document.querySelectorAll('.number').forEach(num =>
     num.addEventListener('click', e => {
@@ -43,13 +44,11 @@ window.addEventListener('load', () => {
     calculator.secondFactor = '0';
     calculator.operation = null;
 
-    document
-      .querySelectorAll('.operations')
-      .forEach(operation => operation.classList.remove('selected'));
+    operators.forEach(operator => operator.classList.remove('selected'));
   });
 
-  document.querySelectorAll('.operations').forEach(operation => {
-    operation.addEventListener('click', e => {
+  operators.forEach(operator => {
+    operator.addEventListener('click', e => {
       console.log(e.target.textContent);
       // handle consecutive operations
       if (calculator.operation && calculator.secondFactor !== '0') {
@@ -61,9 +60,7 @@ window.addEventListener('load', () => {
       }
 
       if (calculator.operation !== e.target.textContent) {
-        document
-          .querySelectorAll('.operations')
-          .forEach(operation => operation.classList.remove('selected'));
+        operators.forEach(operator => operator.classList.remove('selected'));
         calculator.operation = e.target.textContent;
         e.target.classList.add('selected');
       }
@@ -78,8 +75,6 @@ window.addEventListener('load', () => {
     calculator.secondFactor = '0';
     calculator.operation = null;
 
-    document
-      .querySelectorAll('.operations')
-      .forEach(operation => operation.classList.remove('selected'));
+    operators.forEach(operator => operator.classList.remove('selected'));
   });
 });
