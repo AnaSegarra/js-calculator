@@ -1,7 +1,7 @@
 class Calculator {
   constructor() {
     this.firstFactor = '0';
-    this.secondFactor = '0';
+    this.secondFactor;
     this.operation;
   }
 
@@ -19,6 +19,10 @@ class Calculator {
   }
   handleOperation() {
     let result;
+    // operations are based on the first operand if only one operand has been entered when hitting equal sign
+    this.secondFactor = this.secondFactor || this.firstFactor;
+
+    console.log('el segundo número es', this.secondFactor);
     switch (this.operation) {
       case '+':
         result = this.add(this.firstFactor, this.secondFactor);
@@ -33,6 +37,7 @@ class Calculator {
         result = this.divide(this.firstFactor, this.secondFactor);
         break;
       default:
+        // fallback in case user hits equal without choosing an operator
         result = document.getElementById('display').textContent;
     }
     return result;

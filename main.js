@@ -18,18 +18,22 @@ window.addEventListener('load', () => {
         calculator.firstFactor = display.textContent;
       } else {
         console.log('second factor');
-        display.textContent =
-          calculator.secondFactor === '0'
-            ? e.target.textContent
-            : display.textContent + e.target.textContent;
+        display.textContent = !calculator.secondFactor
+          ? e.target.textContent
+          : display.textContent + e.target.textContent;
         calculator.secondFactor = display.textContent;
       }
     })
   );
 
   decimal.addEventListener('click', () => {
-    if (calculator.operation && !calculator.secondFactor.includes('.')) {
-      display.textContent = calculator.secondFactor === '0' ? '0.' : display.textContent + '.';
+    if (calculator.operation) {
+      !calculator.secondFactor
+        ? (display.textContent = '0.')
+        : !display.textContent.includes('.')
+        ? (display.textContent += '.')
+        : '';
+
       calculator.secondFactor = display.textContent;
     } else {
       !display.textContent.includes('.') ? (display.textContent += '.') : '';
@@ -41,7 +45,7 @@ window.addEventListener('load', () => {
     console.log('clearing screen');
     display.textContent = '0';
     calculator.firstFactor = '0';
-    calculator.secondFactor = '0';
+    calculator.secondFactor = null;
     calculator.operation = null;
 
     operators.forEach(operator => operator.classList.remove('selected'));
@@ -56,7 +60,7 @@ window.addEventListener('load', () => {
         console.log('resultado', result);
         display.textContent = result;
         calculator.firstFactor = display.textContent;
-        calculator.secondFactor = '0';
+        calculator.secondFactor = null;
       }
 
       if (calculator.operation !== e.target.textContent) {
@@ -72,7 +76,7 @@ window.addEventListener('load', () => {
     console.log('resultado', result);
     display.textContent = result;
     calculator.firstFactor = display.textContent;
-    calculator.secondFactor = '0';
+    calculator.secondFactor = null;
     calculator.operation = null;
 
     operators.forEach(operator => operator.classList.remove('selected'));
