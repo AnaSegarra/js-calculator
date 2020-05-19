@@ -54,7 +54,8 @@ class Calculator {
       this.screen.textContent = this.firstFactor === '0' ? input : this.screen.textContent + input;
       this.firstFactor = this.screen.textContent;
     } else {
-      this.screen.textContent = !this.secondFactor ? input : this.screen.textContent + input;
+      this.screen.textContent =
+        !this.secondFactor || this.secondFactor === '0' ? input : this.screen.textContent + input;
       this.secondFactor = this.screen.textContent;
     }
   }
