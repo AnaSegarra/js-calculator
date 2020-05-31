@@ -2,8 +2,7 @@
 
 ![calculator](./images/calculator.gif)
 
-> Final result
-
+> Final result - [https://anasegarra.github.io/js-calculator/](https://anasegarra.github.io/js-calculator/)
 ## Overview
 
 The purpose of this activity is to build a basic calculator using vanilla JavaScript. It allows basic mathematical operations such as addition, subtraction, multiplication and division.
